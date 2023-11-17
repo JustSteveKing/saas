@@ -7,16 +7,16 @@ namespace App\Livewire\Auth;
 use App\Enums\Identity\Provider;
 use App\Livewire\Forms\Auth\OnboardingForm;
 use App\Services\AuthenticationService;
+use DanHarrin\LivewireRateLimiting\WithRateLimiting;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Livewire\Component;
-use Livewire\Features\SupportRedirects\Redirector;
 
 final class Onboarding extends Component
 {
+    use WithRateLimiting;
+
     /**
      * @var array{
      *     name: string,
