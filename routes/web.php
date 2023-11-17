@@ -1,18 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
+use App\Http\Controllers\Web\Auth\GitHub;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
-Route::get('/', function () {
-    return view('welcome');
+Route::prefix('auth/github')->as('pages:auth:github:')->group(static function (): void {
+    Route::get('redirect', GitHub\RedirectController::class)->name('redirect');
+    Route::get('callback', GitHub\CallbackController::class)->name('callback');
 });
